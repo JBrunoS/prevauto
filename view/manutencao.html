@@ -204,6 +204,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Manutenção</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Registrar Saída de Veiculo</button>
           </div>
           <div class="form-group">
             <form class="col-sm-6">
@@ -309,6 +310,66 @@
 
   </div>
   <!-- End of Page Wrapper -->
+
+  <!-- Register exits Modal-->
+  <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="container-fluid">
+                  
+                      <form class="user">
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="placa">Placa</label>
+                            <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
+                          </div>
+                          <div class="col-sm-6">
+                            <label for="veiculo">Veiculo</label>
+                            <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          <div class="col-sm-6">
+                            <label for="kms">Destino - Quilometros</label>
+                            <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
+                          </div>
+
+                          <div class="col-sm-6">
+                            <label for="hora">Horário</label>
+                            <input type="time" class="form-control form-control-user" id="hora" placeholder="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <label for="motorista">Motorista</label>
+                            <select name="motorista" class="form-group form-control-user" style="color:DodgerBlue;">
+                              <option selected >Selecione o motorista</option>
+                              <option></option>
+                            </select>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
