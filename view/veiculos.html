@@ -63,7 +63,7 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Adicionar Componentes:</h6>
-            <a class="collapse-item" href="buttons.html">Usuários</a>
+            <a class="collapse-item" href="usuarios.html">Usuários</a>
             <a class="collapse-item" href="cards.html">Veículos</a>
           </div>
         </div>
@@ -279,25 +279,49 @@
                         </div>
                         
                         <div class="form-group row">
-                          <div class="col-sm-6">
+                          <div class="col-sm-4">
                             <label for="kms">Quilometragem</label>
                             <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
                           </div>
 
-                          <div class="col-sm-6">
-                            <label for="data">Data</label>
-                            <input type="date" class="form-control form-control-user" id="data" placeholder="00/00/0000">
+                          <div class="col-sm-4">
+                            <label for="dataModelo">Ano modelo</label>
+                            <input type="month" class="form-control form-control-user" id="dataModelo" placeholder="00/00/0000">
+                          </div>
+
+                          <div class="col-sm-4">
+                            <label for="dataFabricacao">Ano Fabricação</label>
+                            <input type="month" class="form-control form-control-user" id="dataFabricacao" placeholder="00/00/0000">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-sm-4 mb-3 mb-sm-0">
-                            <label for="motorista">Motorista</label>
-                            <input type="text" class="form-control form-control-user" id="motorista" placeholder="Motorista">
+                            <label for="tipo">Tipo</label>
+                            <input type="text" class="form-control form-control-user" id="tipo" placeholder="">
                           </div>
                           <div class="col-sm-4">
-                            <label for="valor">Valor</label>
-                            <input type="text" class="form-control form-control-user" id="valor" placeholder="R$ 0,00">
+                            <label for="cor">Cor</label>
+                            <input type="text" class="form-control form-control-user" id="cor" placeholder="">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="combustivel">Combustível</label>
+                            <input type="text" class="form-control form-control-user" id="combustivel" placeholder="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="especie">Espécie</label>
+                            <input type="text" class="form-control form-control-user" id="especie" placeholder="">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="renavan">Número Renavan</label>
+                            <input type="text" class="form-control form-control-user" id="renavan" placeholder="">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="chassi">Número Chassi</label>
+                            <input type="text" class="form-control form-control-user" id="chassi" placeholder="">
                           </div>
                         </div>
                   
@@ -307,7 +331,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
               </div>
             </div>
           </div>
@@ -377,6 +401,14 @@
     function mostrarMensagem(){
       alert("Botão clicado!");
     }
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $("#btnSaveChanges").click(function(){
+        alert("Pronto para salvar a partir daqui");
+      })
+    });
   </script>
 
 </body>
