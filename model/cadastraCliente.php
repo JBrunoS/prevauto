@@ -1,13 +1,13 @@
 <?php
 include 'conexao.php';
 
-echo "estou aqui";
 
 if (isset($_POST['enviar'])) {
 
     $sql_code = "INSERT INTO usuario (
                         NomeUsuario, 
-                        CPF,            
+                        CPF,    
+                        motorista,        
                         CNH,
                         telefone,
                         email,
@@ -15,7 +15,7 @@ if (isset($_POST['enviar'])) {
                         VALUES (
                         '$_POST[nome]',
                         '$_POST[cpf]',
-                        
+                        '$_POST[motorista]',
                         '$_POST[cnh]',
                         '$_POST[telefone]',
                         '$_POST[email]',
