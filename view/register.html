@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
   <title>PrevAuto - Registro</title>
 
@@ -34,7 +35,7 @@
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
               </div>
-              <form class="user" action="../model/cadastraCliente.php" method="POST">
+              <form class="user" action="../model/validaUsuario.php" method="POST">
                 
                 <div class="form-group row">
                   
@@ -68,14 +69,14 @@
                     <input type="text" class="form-control form-control-user" name="telefone" id="telefone" placeholder="Telefone" required>
                   </div>
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input" id="motorista" name="motorista">
                        <label class="custom-control-label" for="motorista">Motorista?</label>
                     </div>
                   </div>
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-5">
                     <input type="text" class="form-control form-control-user" name="cnh" id="cnh" placeholder="CNH">
                   </div>
 

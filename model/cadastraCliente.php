@@ -1,8 +1,6 @@
 <?php
+session_start();
 include 'conexao.php';
-
-
-if (isset($_POST['enviar'])) {
 
     $sql_code = "INSERT INTO usuario (
                         NomeUsuario, 
@@ -13,13 +11,13 @@ if (isset($_POST['enviar'])) {
                         email,
                         senha) 
                         VALUES (
-                        '$_POST[nome]',
-                        '$_POST[cpf]',
-                        '$_POST[motorista]',
-                        '$_POST[cnh]',
-                        '$_POST[telefone]',
-                        '$_POST[email]',
-                        '$_POST[repeatPassword]'
+                        '$_SESSION[nome]',
+                        '$_SESSION[cpf]',
+                        '$_SESSION[motorista]',
+                        '$_SESSION[cnh]',
+                        '$_SESSION[telefone]',
+                        '$_SESSION[email]',
+                        '$_SESSION[password]'
                         )";
 
         $confirma = $mysqli->query($sql_code) or die($mysqli->error);
@@ -37,9 +35,7 @@ if (isset($_POST['enviar'])) {
             }
             else
                 echo "<script text='javascript'> alert('Não foi possivel salvar no banco')</scritp>";
-    }
 
-
-
+            session_destroy();
 
 ?>
