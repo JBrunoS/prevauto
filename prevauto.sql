@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: 24-Abr-2019 às 17:59
+-- Generation Time: 21-Maio-2019 às 00:54
 -- Versão do servidor: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -31,26 +31,11 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `saida_veiculos`;
 CREATE TABLE IF NOT EXISTS `saida_veiculos` (
   `id_saida` int(11) NOT NULL AUTO_INCREMENT,
-  `id_motorista` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
   `quilometragem` int(11) NOT NULL,
   `horario` int(11) NOT NULL,
   PRIMARY KEY (`id_saida`),
-  KEY `id_motorista` (`id_motorista`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `servicos`
---
-
-DROP TABLE IF EXISTS `servicos`;
-CREATE TABLE IF NOT EXISTS `servicos` (
-  `IDServicos` int(11) NOT NULL AUTO_INCREMENT,
-  `Tipo` varchar(140) NOT NULL,
-  `KilometragemMaxima` int(11) NOT NULL,
-  `TempoMaximo` int(11) NOT NULL,
-  PRIMARY KEY (`IDServicos`)
+  KEY `id_empresa` (`id_usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -61,16 +46,19 @@ CREATE TABLE IF NOT EXISTS `servicos` (
 
 DROP TABLE IF EXISTS `servicosrealizados`;
 CREATE TABLE IF NOT EXISTS `servicosrealizados` (
-  `IDServicosRealizados` int(11) NOT NULL AUTO_INCREMENT,
-  `IDservico` int(11) NOT NULL,
-  `IDVeiculo` int(11) NOT NULL,
-  `IDUsuario` int(11) NOT NULL,
-  `dataServivo` date NOT NULL,
-  `Kilometragem` int(11) NOT NULL,
-  PRIMARY KEY (`IDServicosRealizados`),
-  KEY `IDservico` (`IDservico`),
-  KEY `IDVeiculo` (`IDVeiculo`),
-  KEY `IDUsuario` (`IDUsuario`)
+  `id_servicos_realizados` int(11) NOT NULL AUTO_INCREMENT,
+  `nome_servico` varchar(55) NOT NULL,
+  `id_veiculo` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL,
+  `data_servico` date NOT NULL,
+  `quilometragem` int(11) NOT NULL,
+  PRIMARY KEY (`id_servicos_realizados`),
+  UNIQUE KEY `id_servico` (`nome_servico`),
+  UNIQUE KEY `id_servico_3` (`nome_servico`),
+  KEY `IDservico` (`nome_servico`),
+  KEY `IDVeiculo` (`id_veiculo`),
+  KEY `IDUsuario` (`id_usuario`),
+  KEY `id_servico_2` (`nome_servico`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -81,16 +69,29 @@ CREATE TABLE IF NOT EXISTS `servicosrealizados` (
 
 DROP TABLE IF EXISTS `usuario`;
 CREATE TABLE IF NOT EXISTS `usuario` (
-  `IdUsuario` int(11) NOT NULL AUTO_INCREMENT,
-  `NomeUsuario` varchar(150) NOT NULL,
-  `CPF` int(11) NOT NULL,
-  `motorista` tinyint(1) NOT NULL,
-  `CNH` int(11) NOT NULL,
-  `telefone` int(11) NOT NULL,
-  `email` int(11) NOT NULL,
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `empresa` varchar(55) NOT NULL,
+  `nome_usuario` varchar(150) NOT NULL,
+  `cpf` bigint(20) NOT NULL,
+  `motorista` varchar(4) NOT NULL,
+  `cnh` varchar(25) NOT NULL,
+  `telefone` varchar(20) NOT NULL,
+  `email` varchar(45) NOT NULL,
   `senha` varchar(45) NOT NULL,
-  PRIMARY KEY (`IdUsuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `permissao` varchar(10) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `id_empresa` (`empresa`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `empresa`, `nome_usuario`, `cpf`, `motorista`, `cnh`, `telefone`, `email`, `senha`, `permissao`) VALUES
+(1, 'PrevAuto controle de frotas', 'JoÃ£o Bruno Sousa', 60522479324, 'on', '0', '87306182', 'j_bruno_s@hotmail.com', 'joao', ''),
+(2, 'Ruth Modas', 'Ruth Rocha Lima Rodrigues', 333333, 'on', '90909', '85996223018', 'ruthrochal@hotmail.com', 'senha', 'SIM'),
+(3, 'Lanchonete Moreira', 'Bruno Sousa', 60522479324, 'on', '09090909090909', '87306182', 'joaobruno.sousa@yahoo.com', 'senha', 'NÃ‚O'),
+(4, 'kkkkkkk', 'Eliude Rocha', 0, 'on', '090912212', '87666612', 'lia@lia.com', '1222', 'SIM');
 
 -- --------------------------------------------------------
 
@@ -100,21 +101,30 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 
 DROP TABLE IF EXISTS `veiculos`;
 CREATE TABLE IF NOT EXISTS `veiculos` (
-  `IDVeiculo` int(11) NOT NULL AUTO_INCREMENT,
+  `id_veiculo` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) NOT NULL,
   `marca` varchar(45) NOT NULL,
   `tipo` varchar(45) NOT NULL,
-  `AnoFabricacao` int(11) NOT NULL,
+  `ano_fabricacao` varchar(45) NOT NULL,
   `combustivel` varchar(45) NOT NULL,
-  `Especie` varchar(45) NOT NULL,
-  `AnoModelo` int(11) NOT NULL,
-  `NumeroChassi` int(11) NOT NULL,
-  `NumeroMotor` int(11) NOT NULL,
-  `Cor` varchar(45) NOT NULL,
+  `especie` varchar(45) NOT NULL,
+  `ano_modelo` varchar(45) NOT NULL,
+  `numero_chassi` varchar(45) NOT NULL,
+  `numero_motor` varchar(45) NOT NULL,
+  `cor` varchar(45) NOT NULL,
   `placa` varchar(45) NOT NULL,
-  `renavan` int(11) NOT NULL,
-  `Kilometragem` int(11) NOT NULL,
-  PRIMARY KEY (`IDVeiculo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `renavan` varchar(45) NOT NULL,
+  `quilometragem` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_veiculo`),
+  KEY `id_empresa` (`id_usuario`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `veiculos`
+--
+
+INSERT INTO `veiculos` (`id_veiculo`, `id_usuario`, `marca`, `tipo`, `ano_fabricacao`, `combustivel`, `especie`, `ano_modelo`, `numero_chassi`, `numero_motor`, `cor`, `placa`, `renavan`, `quilometragem`) VALUES
+(7, 1, 'Pajero', 'particular', '01/01/2011 2:59 PM', 'DIESEL', 'passageiro', '01/02/2012 2:59 PM', '887778', '87877655', 'pRETO', 'ocn-1427', '888888', '100.000');
 
 --
 -- Constraints for dumped tables
@@ -124,21 +134,20 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
 -- Limitadores para a tabela `saida_veiculos`
 --
 ALTER TABLE `saida_veiculos`
-  ADD CONSTRAINT `saida_veiculos_ibfk_1` FOREIGN KEY (`id_motorista`) REFERENCES `usuario` (`IdUsuario`);
+  ADD CONSTRAINT `saida_veiculos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 
 --
 -- Limitadores para a tabela `servicosrealizados`
 --
 ALTER TABLE `servicosrealizados`
-  ADD CONSTRAINT `servicosrealizados_ibfk_1` FOREIGN KEY (`IDservico`) REFERENCES `servicos` (`IDServicos`),
-  ADD CONSTRAINT `servicosrealizados_ibfk_2` FOREIGN KEY (`IDUsuario`) REFERENCES `usuario` (`IdUsuario`),
-  ADD CONSTRAINT `servicosrealizados_ibfk_3` FOREIGN KEY (`IDVeiculo`) REFERENCES `veiculos` (`IDVeiculo`);
+  ADD CONSTRAINT `servicosrealizados_ibfk_2` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`),
+  ADD CONSTRAINT `servicosrealizados_ibfk_3` FOREIGN KEY (`id_veiculo`) REFERENCES `veiculos` (`id_veiculo`);
 
 --
--- Limitadores para a tabela `usuario`
+-- Limitadores para a tabela `veiculos`
 --
-ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`IdUsuario`) REFERENCES `saida_veiculos` (`id_motorista`);
+ALTER TABLE `veiculos`
+  ADD CONSTRAINT `veiculos_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id_usuario`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

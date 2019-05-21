@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
@@ -9,7 +10,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Charts</title>
+  <title>PrevAuto</title>
 
   <!-- Custom fonts for this template-->
   <link href="../bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -29,9 +30,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-car"></i>
         </div>
         <div class="sidebar-brand-text mx-3">PrevAuto</div>
       </a>
@@ -40,10 +41,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Tela Inicial</span></a>
       </li>
 
       <!-- Divider -->
@@ -63,14 +64,14 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Adicionar Componentes:</h6>
-            <a class="collapse-item" href="usuarios.html">Usuários</a>
-            <a class="collapse-item" href="veiculos.html">Veículos</a>
+            <a class="collapse-item" href="usuarios.php">Usuários</a>
+            <a class="collapse-item" href="veiculos.php">Veículos</a>
           </div>
         </div>
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
           <i class="fas fa-fw fa-wrench"></i>
           <span>Serviços</span>
@@ -78,7 +79,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Serviços:</h6>
-            <a class="collapse-item" href="manutencao.html">Manutenção</a>
+            <a class="collapse-item" href="manutencao.php">Manutenção</a>
           </div>
         </div>
       </li>
@@ -86,10 +87,12 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
+      <!-- Heading -->
+      
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Relatórios</span></a>
       </li>
@@ -157,11 +160,14 @@
               </div>
             </li>
 
+            <div class="topbar-divider d-none d-sm-block"></div>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><i class="fas fa-user-circle "> </i><?php 
+                  echo " " . $_SESSION['nome_usuario'];
+                  ?></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -194,61 +200,97 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">Relatórios</h1>
-          
-          <!-- Content Row -->
-          <div class="row">
-
-            <div class="col-xl-8 col-lg-7">
-
-              <!-- Area Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Area Chart</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the area chart can be found in the <code>/js/demo/chart-area-demo.js</code> file.
-                </div>
-              </div>
-
-              <!-- Bar Chart -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Bar Chart</h6>
-                </div>
-                <div class="card-body">
-                  <div class="chart-bar">
-                    <canvas id="myBarChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the bar chart can be found in the <code>/js/demo/chart-bar-demo.js</code> file.
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Donut Chart -->
-            <div class="col-xl-4 col-lg-5">
-              <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Donut Chart</h6>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                  <div class="chart-pie pt-4">
-                    <canvas id="myPieChart"></canvas>
-                  </div>
-                  <hr>
-                  Styling for the donut chart can be found in the <code>/js/demo/chart-pie-demo.js</code> file.
-                </div>
-              </div>
-            </div>
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Manutenção</h1>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-truck"></i> <i class="fas fa-check"></i> Registrar Saída de Veiculo</button>
           </div>
+          <div class="form-group">
+            <form class="col-sm-6">
+            <select name="servicos" class="form-control form-control-user" style="color:DodgerBlue;">
+              <option selected></option>
+              <option value="">Abastecimento</option>
+              <option value="">Lavagem</option>
+              <option value="" disabled>---------</option>
+              <option value="" disabled>PNEUS E RODAS</option>
+              <option value="">Alinhamento</option>
+              <option value="">Balanceamento</option>
+              <option value="">Rodízio</option>
+              <option disabled>SISTEMA DE FREIOS</option>
+              <option value="">Troca de fluídos de freios</option>
+              <option value="">Troca de pastilhas de freios</option>
+              <option value="">Sensor de pastilhas</option>
+              <option value="">Retifica ou troca de disco de freios</option>
+              <option value="">Serviço e reparo de sistemas ABS</option>
+              <option disabled>SUSPENSÃO</option>
+              <option value="">Troca de amortecedores e molas</option>
+              <option value="">Troca e repado de suspensão a ar</option>
+              <option value="">Troca da barra de direção</option>
+              <option value="">Troca do braço axial</option>
+              <option value="">Troca da bandeja</option>
+              <option disabled>TRANSMISSÃO, CÂMBIO E EMBREAGEM</option>
+              <option value="">Troca de oléo</option>
+              <option value="">Troca do kit de embreagem (quando transmissão manual)</option>
+              <option value="">Troca de óleo de câmbio</option>
+              <option value="">Regulagem de transmissão</option>
+              <option value="">Reparo de Caixa de transmissão (Automática e Manual)</option>
+              <option value="">Reparo em Corpo de Válvulas</option>
+              <option value="">Reparo de Solenoide</option>
+              <option value="">Conversor de torque</option>
+              <option value="">Planetárias – Válvulas</option>
+              <option value="">Calibração eletrônica</option>
+              <option value="">Transmissão completa</option>
+            </select>
+          
+          </div>
+          
+            <div class="row">
+              <div class="container-fluid">
+                
+              <div class="user">
+                <div class="form-group row">
+                  <div class="col-sm-3 mb-3 mb-sm-0">
+                    <label for="placa">Placa</label>
+                    <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="veiculo">Veiculo</label>
+                    <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
+                  </div>
+                
+                  <div class="col-sm-3">
+                    <label for="kms">Quilometragem</label>
+                    <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
+                  </div>
+
+                  <div class="col-sm-3">
+                    <label for="data">Data</label>
+                    <input type="date" class="form-control form-control-user" id="data" placeholder="00/00/0000">
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label for="motorista">Motorista</label>
+                    <input type="text" class="form-control form-control-user" id="motorista" placeholder="Motorista">
+                  </div>
+                  <div class="col-sm-4">
+                    <label for="valor">Valor</label>
+                    <input type="text" class="form-control form-control-user" id="valor" placeholder="R$ 0,00">
+                  </div>
+                </div>
+
+                <div class="d-flex justify-content-start">
+                  <button type="button" class="btn btn-primary btn-user"><i class="fas fa-save"></i> 
+                  Salvar Alterações
+                </button>
+                </div>
+                
+                <hr>
+              </div>
+              </form>
+              </div>
+          </div>
+          
 
         </div>
         <!-- /.container-fluid -->
@@ -260,7 +302,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; PrevAuto 2019</span>
           </div>
         </div>
       </footer>
@@ -271,6 +313,66 @@
 
   </div>
   <!-- End of Page Wrapper -->
+
+  <!-- Register exits Modal-->
+  <!-- Modal -->
+        <div class="modal fad bg-modal-example-lg" id="exampleModalLarger" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="container-fluid">
+                  
+                      <form class="user">
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="placa">Placa</label>
+                            <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
+                          </div>
+                          <div class="col-sm-6">
+                            <label for="veiculo">Veiculo</label>
+                            <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          <div class="col-sm-6">
+                            <label for="kms">Destino - Quilometros</label>
+                            <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
+                          </div>
+
+                          <div class="col-sm-6">
+                            <label for="hora">Horário</label>
+                            <input type="time" class="form-control form-control-user" id="hora" placeholder="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-12">
+                            <label for="motorista">Motorista</label>
+                            <select name="motorista" class="form-group form-control-user" style="color:DodgerBlue;">
+                              <option selected >Selecione o motorista</option>
+                              <option></option>
+                            </select>
+                          </div>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
 
   <!-- Scroll to Top Button-->
   <a class="scroll-to-top rounded" href="#page-top">
@@ -305,14 +407,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../bootstrap/js/sb-admin-2.min.js"></script>
-
-  <!-- Page level plugins -->
-  <script src="../bootstrap/vendor/chart.js/Chart.min.js"></script>
-
-  <!-- Page level custom scripts -->
-  <script src="../bootstrap/js/demo/chart-area-demo.js"></script>
-  <script src="../bootstrap/js/demo/chart-pie-demo.js"></script>
-  <script src="../bootstrap/js/demo/chart-bar-demo.js"></script>
 
 </body>
 

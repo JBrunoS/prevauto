@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
@@ -11,12 +12,26 @@
 
   <title>PrevAuto</title>
 
-  <!-- Custom fonts for this template-->
+   <!-- Custom fonts for this template-->
   <link href="../bootstrap/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link href="../bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
+
+<script type="text/javascript" src="../model/carregaVeiculos.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+
+
 
 </head>
 
@@ -29,9 +44,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-car"></i>
         </div>
         <div class="sidebar-brand-text mx-3">PrevAuto</div>
       </a>
@@ -40,10 +55,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Tela Inicial</span></a>
       </li>
 
       <!-- Divider -->
@@ -55,7 +70,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Componentes</span>
@@ -63,8 +78,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Adicionar Componentes:</h6>
-            <a class="collapse-item" href="usuarios.html">Usuários</a>
-            <a class="collapse-item" href="veiculos.html">Veículos</a>
+            <a class="collapse-item" href="usuarios.php">Usuários</a>
+            <a class="collapse-item" href="veiculos.php">Veículos</a>
           </div>
         </div>
       </li>
@@ -78,7 +93,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Serviços:</h6>
-            <a class="collapse-item" href="manutencao.html">Manutenção</a>
+            <a class="collapse-item" href="manutencao.php">Manutenção</a>
           </div>
         </div>
       </li>
@@ -89,7 +104,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Relatórios</span></a>
       </li>
@@ -166,8 +181,9 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><i class="fas fa-user-circle "> </i><?php 
+                  echo " " . $_SESSION['nome_usuario'];
+                  ?></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -202,7 +218,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Veículos</h1>
-            <a href="#" id="btnNovo" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter"><i class="fas fa-plus"></i> Adicionar Novo</a>
+            <a href="#" id="btnNovo" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-plus"></i> Adicionar Novo</a>
           </div>
 
           <!-- Content Row -->
@@ -210,6 +226,7 @@
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Serviços</h6>
             </div>
+
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-unbordered" id="dataTable" width="100%" cellspacing="0">
@@ -218,7 +235,6 @@
                       <th>Veículo</th>
                       <th>Placa</th>
                       <th>Quilometragem</th>
-                      <th>Próxima manutenção</th>
                       <th>Detalhes</th>
                     </tr>
                   </thead>
@@ -227,19 +243,12 @@
                       <th>Veículo</th>
                       <th>Placa</th>
                       <th>Quilometragem</th>
-                      <th>Próxima manutenção</th>
                       <th>Detalhes</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><button type="button" class="btn-circle btn-primary"  onclick="mostrarMensagem();">
-                        <i class="fas fa-check"></i>
-                      </button></td>
+                      
                     </tr>
                     
                   </tbody>
@@ -249,8 +258,8 @@
         <!-- /.container-fluid -->
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade bd-example-modal-lg" id="exampleModalLarger" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Novo Veículo</h5>
@@ -262,73 +271,92 @@
                   <div class="row">
                     <div class="container-fluid">
                   
-                      <form class="user">
+                      <form class="user" action="../model/validaVeiculo.php" method="POST">
                         <div class="form-group row">
-                          <div class="col-sm-6 mb-3 mb-sm-0">
+                          <div class="col-sm-3 mb-3 mb-sm-0">
                             <label for="placa">Placa</label>
-                            <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
+                            <input type="text" class="form-control" id="placa" name="placa" placeholder="Placa do veículo" required="">
                           </div>
                           <div class="col-sm-6">
                             <label for="veiculo">Veiculo</label>
-                            <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
+                            <input type="text" class="form-control" id="veiculo" name="modelo" placeholder="modelo" required="">
+                          </div>
+                          <div class="col-sm-3">
+                            <label for="kms">Quilometragem</label>
+                            <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" required="">
                           </div>
                         </div>
                         
                         <div class="form-group row">
-                          <div class="col-sm-4">
-                            <label for="kms">Quilometragem</label>
-                            <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
-                          </div>
+                          
 
-                          <div class="col-sm-4">
-                            <label for="dataModelo">Ano modelo</label>
-                            <input type="month" class="form-control form-control-user" id="dataModelo" placeholder="00/00/0000">
+                          <div class="form-group col-sm-4">
+                            <label for="dataModelo">Data Modelo</label>
+                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                              <input type="text" class="form-control datetimepicker-input" id="dataModelo" name="dataModelo" data-target="#datetimepicker1" required="" />
+                              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                              </div>
+                            </div>
                           </div>
 
                           <div class="col-sm-4">
                             <label for="dataFabricacao">Ano Fabricação</label>
-                            <input type="month" class="form-control form-control-user" id="dataFabricacao" placeholder="00/00/0000">
+                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                              <input type="text" class="form-control datetimepicker-input" id="dataFabricacao" name="dataFabricacao" data-target="#dateTimePicker2"  required="">
+                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                              <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                            </div>
                           </div>
+                            </div>
+
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="tipo">Tipo</label>
+                            <input type="text" class="form-control" id="tipo" name="tipo" placeholder="">
+                          </div>
+                            
                         </div>
 
                         <div class="form-group row">
-                          <div class="col-sm-4 mb-3 mb-sm-0">
-                            <label for="tipo">Tipo</label>
-                            <input type="text" class="form-control form-control-user" id="tipo" placeholder="">
-                          </div>
+                          
                           <div class="col-sm-4">
                             <label for="cor">Cor</label>
-                            <input type="text" class="form-control form-control-user" id="cor" placeholder="">
+                            <input type="text" class="form-control" id="cor" name="cor" placeholder="" required="">
                           </div>
                           <div class="col-sm-4">
                             <label for="combustivel">Combustível</label>
-                            <input type="text" class="form-control form-control-user" id="combustivel" placeholder="">
+                            <input type="text" class="form-control" id="combustivel" name="combustivel" placeholder="" required="">
+                          </div>
+                          <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="especie">Espécie</label>
+                            <input type="text" class="form-control " id="especie" name="especie" placeholder="" required="">
                           </div>
                         </div>
 
                         <div class="form-group row">
-                          <div class="col-sm-4 mb-3 mb-sm-0">
-                            <label for="especie">Espécie</label>
-                            <input type="text" class="form-control form-control-user" id="especie" placeholder="">
-                          </div>
+                          
                           <div class="col-sm-4">
                             <label for="renavan">Número Renavan</label>
-                            <input type="text" class="form-control form-control-user" id="renavan" placeholder="">
+                            <input type="text" class="form-control " id="renavan" name="renavan" placeholder="" required="">
                           </div>
                           <div class="col-sm-4">
                             <label for="chassi">Número Chassi</label>
-                            <input type="text" class="form-control form-control-user" id="chassi" placeholder="">
+                            <input type="text" class="form-control " name="chassi" id="chassi" placeholder="" required="">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="motor">Número Motor</label>
+                            <input type="text" class="form-control" name="motor" id="motor" placeholder="" required="">
                           </div>
                         </div>
-                  
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-success" name="salvar" id="salvar" onclick="" >Save changes</button>
+                        </div>
                     </form>
                   </div>
               </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
-              </div>
             </div>
           </div>
         </div>
@@ -340,7 +368,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; PrevAuto 2019</span>
           </div>
         </div>
       </footer>
@@ -390,20 +418,27 @@
   <script src="../bootstrap/vendor/chart.js/Chart.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="../bootstrap/js/demo/chart-area-demo.js"></script>
-  <script src="../bootstrap/js/demo/chart-pie-demo.js"></script>
+  
+  <script type="text/javascript" src="../model/carregaVeiculos.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+  
+
+  <script type="text/javascript"> carregaVeiculos(); </script>
 
   <script type="text/javascript">
-    function mostrarMensagem(){
-      alert("Botão clicado!");
-    }
+    $(function(){
+      $("#dateTimePicker1").datetimepicker();
+      $("#dateTimePicker2").datetimepicker();
+    });
   </script>
 
   <script type="text/javascript">
-    $(document).ready(function(){
-      $("#btnSaveChanges").click(function(){
-        alert("Pronto para salvar a partir daqui");
-      })
+    $(function(){
+      $("#placa").mask("aaa-9999");
+      $("#kms").mask("");
     });
   </script>
 

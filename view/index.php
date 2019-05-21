@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<?php session_start();
+?>
 <html lang="en">
 
 <head>
@@ -29,9 +31,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-car"></i>
         </div>
         <div class="sidebar-brand-text mx-3">PrevAuto</div>
       </a>
@@ -41,9 +43,9 @@
 
       <!-- Nav Item - Dashboard -->
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Tela Inicial</span></a>
       </li>
 
       <!-- Divider -->
@@ -63,8 +65,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Adicionar Componentes:</h6>
-            <a class="collapse-item" href="usuarios.html">Usuários</a>
-            <a class="collapse-item" href="veiculos.html">Veículos</a>
+            <a class="collapse-item" href="usuarios.php">Usuários</a>
+            <a class="collapse-item" href="veiculos.php">Veículos</a>
           </div>
         </div>
       </li>
@@ -78,7 +80,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Serviços:</h6>
-            <a class="collapse-item" href="manutencao.html">Manutenção</a>
+            <a class="collapse-item" href="manutencao.php">Manutenção</a>
           </div>
         </div>
       </li>
@@ -89,7 +91,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Relatórios</span></a>
       </li>
@@ -157,13 +159,14 @@
               </div>
             </li>
 
-            
+            <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><i class="fas fa-user-circle "> </i><?php 
+                  echo " " . $_SESSION['nome_usuario'] . " " . $_SESSION['id_usuario'];
+                  ?></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -265,7 +268,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; PrevAuto 2019</span>
           </div>
         </div>
       </footer>

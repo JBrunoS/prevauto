@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php session_start(); ?>
 
 <head>
 
@@ -18,6 +19,8 @@
   <!-- Custom styles for this template-->
   <link href="../bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
 
+  
+
 </head>
 
 <body id="page-top">
@@ -29,9 +32,9 @@
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
+          <i class="fas fa-car"></i>
         </div>
         <div class="sidebar-brand-text mx-3">PrevAuto</div>
       </a>
@@ -40,10 +43,10 @@
       <hr class="sidebar-divider my-0">
 
       <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
+          <span>Tela Inicial</span></a>
       </li>
 
       <!-- Divider -->
@@ -55,7 +58,7 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>Componentes</span>
@@ -63,8 +66,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Adicionar Componentes:</h6>
-            <a class="collapse-item" href="usuarios.html">Usuários</a>
-            <a class="collapse-item" href="veiculos.html">Veículos</a>
+            <a class="collapse-item" href="usuarios.php">Usuários</a>
+            <a class="collapse-item" href="veiculos.php">Veículos</a>
           </div>
         </div>
       </li>
@@ -78,7 +81,7 @@
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Serviços:</h6>
-            <a class="collapse-item" href="manutencao.html">Manutenção</a>
+            <a class="collapse-item" href="manutencao.php">Manutenção</a>
           </div>
         </div>
       </li>
@@ -89,7 +92,7 @@
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="charts.php">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Relatórios</span></a>
       </li>
@@ -157,13 +160,14 @@
               </div>
             </li>
 
-            
+            <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><i class="fas fa-user-circle "> </i><?php 
+                  echo " " . $_SESSION['nome_usuario'];
+                  ?></span>
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -203,60 +207,64 @@
           <!-- Content Row -->
           <div class="container-fluid">
 
+
             <div class="form-group row col-md-12">
               <div class="form-group col-md-4">
-                <button class="form-control form-control-user btn btn-info"><i class="fas fa-edit"> Editar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-edit"> Editar</i></button>
               </div>
               
               <div class="form-group col-md-4">
-                <button class="form-control form-control-user btn btn-info"><i class="fas fa-trash"> Excluir</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-trash"> Excluir</i></button>
               </div>
               <div class="form-group col-md-4">
-                <button class="form-control form-control-user btn btn-info"><i class="fas fa-plus"> Adicionar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-plus"> Adicionar</i></button>
               </div>
             </div>
 
             <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">Serviços</h6>
+              <h6 class="m-0 font-weight-bold text-primary">Usuários</h6>
             </div>
+
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-unbordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
+                      <th>Empresa</th>
                       <th>Nome</th>
                       <th>CPF</th>
                       <th>CNH</th>
                       <th>Motorista</th>
                       <th>Email</th>
                       <th>Telefone</th>
-                      <th>Verificar</th>
+                      <th>Permissão</th>
                     </tr>
                   </thead>
                   <tfoot>
                     <tr>
+                      <th>Empresa</th>
                       <th>Nome</th>
                       <th>CPF</th>
                       <th>CNH</th>
                       <th>Motorista</th>
                       <th>Email</th>
                       <th>Telefone</th>
-                      <th>Verificar</th>
+                      <th>Permissão</th>
                     </tr>
                   </tfoot>
                   <tbody>
                     <tr>
-                      <td>João Bruno R. Sousa</td>
-                      <td>60522479324</td>
-                      <td>12345678912</td>
-                      <td>Sim</td>
-                      <td>j_bruno_s@hotmail.com</td>
-                      <td>87306182</td>
-                      <td><button type="button" class="btn-circle btn-primary"  onclick="mostrarMensagem();">
-                        <i class="fas fa-check"></i>
-                      </button></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
                     </tr>
+                    
                     
                   </tbody>
                 </table>
@@ -273,7 +281,7 @@
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2019</span>
+            <span>Copyright &copy; PrevAuto 2019</span>
           </div>
         </div>
       </footer>

@@ -18,32 +18,32 @@ $indice = 0;
     $stmt->execute(array('email' => $email));
                   
       while($row = $stmt->fetch()) {  
-        json_encode(array("id" => $idcliente = $row['IdUsuario'],
-        "nome" => $row['NomeUsuario'],
-        "cpf" => $row['CPF'],
+        json_encode(array("id" => $idcliente = $row['id_usuario'],
+        "nome" => $row['nome_usuario'],
+        "cpf" => $row['cpf'],
         "email" => $row['email'],
         "telefone" => $row['telefone']));
 
-        $idcliente = $row['IdUsuario'];
-        $nome = $row['NomeUsuario'];
-        $idade = $row['CPF'];
+        $idcliente = $row['id_usuario'];
+        $nome = $row['nome_usuario'];
+        $idade = $row['cpf'];
         $email = $row['email'];
         $telefone = $row['telefone'];
 
         $indice ++;
         
-        $_SESSION['IdUsuario'] = $idcliente; 
-        $_SESSION['NomeUsuario'] = $nome; 
-        $_SESSION['CPF'] = $idade;
+        $_SESSION['id_usuario'] = $idcliente; 
+        $_SESSION['nome_usuario'] = $nome; 
+        $_SESSION['cpf'] = $idade;
         $_SESSION['email'] = $email; 
         $_SESSION['telefone'] = $telefone;
       } 
-      if (!isset($_SESSION['IdUsuario']) || $indice == 0) {
+      if (!isset($_SESSION['id_usuario']) || $indice == 0) {
         echo "<script> alert('Usuário não cadastrado!'); </script>";
         echo "<script> location.href='../view/login.html'; </script>";
       }else{
         echo "<script> alert('Seja Bem vindo $nome'); </script>";
-        echo "<script> location.href='../view/index.html'; </script>";
+        echo "<script> location.href='../view/index.php'; </script>";
       }
   }
   

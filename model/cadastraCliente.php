@@ -3,21 +3,25 @@ session_start();
 include 'conexao.php';
 
     $sql_code = "INSERT INTO usuario (
-                        NomeUsuario, 
-                        CPF,    
+                        empresa,
+                        nome_usuario, 
+                        cpf,    
                         motorista,        
-                        CNH,
+                        cnh,
                         telefone,
                         email,
-                        senha) 
+                        senha,
+                        permissao) 
                         VALUES (
+                        '$_SESSION[empresa]',
                         '$_SESSION[nome]',
                         '$_SESSION[cpf]',
                         '$_SESSION[motorista]',
                         '$_SESSION[cnh]',
                         '$_SESSION[telefone]',
                         '$_SESSION[email]',
-                        '$_SESSION[password]'
+                        '$_SESSION[password]',
+                        '$_SESSION[permissao]'
                         )";
 
         $confirma = $mysqli->query($sql_code) or die($mysqli->error);
