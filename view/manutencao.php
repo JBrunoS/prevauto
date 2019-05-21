@@ -333,30 +333,30 @@
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="placa">Placa</label>
-                            <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
+                            <input type="text" class="form-control" id="placa" placeholder="Placa do veículo">
                           </div>
                           <div class="col-sm-6">
                             <label for="veiculo">Veiculo</label>
-                            <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
+                            <input type="text" class="form-control " id="veiculo" placeholder="Veiculo">
                           </div>
                         </div>
                         
                         <div class="form-group row">
                           <div class="col-sm-6">
                             <label for="kms">Destino - Quilometros</label>
-                            <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
+                            <input type="text" class="form-control" id="kms" placeholder="Quilometragem">
                           </div>
 
                           <div class="col-sm-6">
                             <label for="hora">Horário</label>
-                            <input type="time" class="form-control form-control-user" id="hora" placeholder="">
+                            <input type="time" class="form-control " id="hora" placeholder="">
                           </div>
                         </div>
 
                         <div class="form-group row">
-                          <div class="col-sm-12">
+                          <div class="col-sm-6">
                             <label for="motorista">Motorista</label>
-                            <select name="motorista" class="form-group form-control-user" style="color:DodgerBlue;">
+                            <select name="motorista" class="form-control" style="color:DodgerBlue;">
                               <option selected >Selecione o motorista</option>
                               <option></option>
                             </select>
