@@ -18,13 +18,12 @@
 
   <!-- Custom styles for this template-->
   <link href="../bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
+  
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 
 <script type="text/javascript" src="../model/carregaVeiculos.js"></script>
@@ -292,9 +291,9 @@
 
                           <div class="form-group col-sm-4">
                             <label for="dataModelo">Data Modelo</label>
-                            <div class="input-group date" id="datetimepicker1" data-target-input="nearest">
+                            <div class="input-group date" id="date1" data-target-input="nearest">
                               <input type="text" class="form-control datetimepicker-input" id="dataModelo" name="dataModelo" data-target="#datetimepicker1" required="" />
-                              <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+                              <div class="input-group-append" data-target="#date1" data-toggle="datetimepicker">
                               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                               </div>
                             </div>
@@ -302,9 +301,9 @@
 
                           <div class="col-sm-4">
                             <label for="dataFabricacao">Ano Fabricação</label>
-                            <div class="input-group date" id="datetimepicker2" data-target-input="nearest">
+                            <div class="input-group date" id="date2" data-target-input="nearest">
                               <input type="text" class="form-control datetimepicker-input" id="dataFabricacao" name="dataFabricacao" data-target="#dateTimePicker2"  required="">
-                            <div class="input-group-append" data-target="#datetimepicker2" data-toggle="datetimepicker">
+                            <div class="input-group-append" data-target="#date2" data-toggle="datetimepicker">
                               <div class="input-group-text"><i class="fa fa-calendar"></i></div>
                             </div>
                           </div>
@@ -421,7 +420,11 @@
   
   <script type="text/javascript" src="../model/carregaVeiculos.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/js/tempusdominus-bootstrap-4.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
   
@@ -433,6 +436,16 @@
       $("#dateTimePicker1").datetimepicker();
       $("#dateTimePicker2").datetimepicker();
     });
+
+    $(function(){
+            $("#date1").datetimepicker({
+                format: 'L'
+            });
+
+            $("#date2").datetimepicker({
+              format: 'L'
+            });
+        })
   </script>
 
   <script type="text/javascript">
