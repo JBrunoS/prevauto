@@ -26,7 +26,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.0.1/css/tempusdominus-bootstrap-4.min.css" />
 
-<script type="text/javascript" src="../model/carregaVeiculos.js"></script>
+<!--<script type="text/javascript" src="../js/carregaVeiculos.js"></script>-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 
 
@@ -246,17 +246,59 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      
-                    </tr>
-                    
                   </tbody>
                 </table>
               </div>
             </div>
         <!-- /.container-fluid -->
 
-        <!-- Modal -->
+      </div>
+      <!-- End of Main Content -->
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; PrevAuto 2019</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <form action="veiculos.php" method="POST">
+            <button class="btn btn-primary" type="submit" name="btnsair" id="btnsair">Logout</button> 
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Register Modal-->
+  <!-- Modal -->
         <div class="modal fade bd-example-modal-lg" id="exampleModalLarger" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel" aria-hidden="true">
           <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
@@ -360,49 +402,6 @@
           </div>
         </div>
 
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; PrevAuto 2019</span>
-          </div>
-        </div>
-      </footer>
-      <!-- End of Footer -->
-
-    </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- Bootstrap core JavaScript-->
   <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
   <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -418,7 +417,7 @@
 
   <!-- Page level custom scripts -->
   
-  <script type="text/javascript" src="../model/carregaVeiculos.js"></script>
+  <script type="text/javascript" src="../js/carregaVeiculos.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
@@ -449,6 +448,18 @@
   </script>
 
   <script type="text/javascript">
+    function mostrarMensagem(){
+
+    $('#dataTable tbody tr').each(function(index,td){
+          var nome = $(td).find(".veiculo");
+          //nome = $(td).text();
+          alert(nome);
+    });
+}
+
+  </script>
+
+  <script type="text/javascript">
     $(function(){
       $("#placa").mask("aaa-9999");
       $("#kms").mask("");
@@ -456,5 +467,15 @@
   </script>
 
 </body>
+
+<?php if (isset($_POST['btnsair'])) {
+  //echo "BRUNO";
+  //session_destroy();
+  echo session_id();
+  $bruno = session_id();
+  echo "<script> alert('$bruno'); </script>";
+  // echo "<script> location.href='../view/login.html'; </script>";
+} 
+?>
 
 </html>

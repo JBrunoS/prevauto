@@ -45,7 +45,7 @@ $indice = 0;
       } 
 
       if ($indice == 0) {
-        echo "<script> alert('Veiculo não se encontra cadastrado!'); </script>";
+        //echo "<script> alert('Veiculo não se encontra cadastrado!'); </script>";
         echo "<script> location.href='cadastraVeiculo.php'; </script>";
         //echo "Pode cadastrar";
       }else{

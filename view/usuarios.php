@@ -18,6 +18,8 @@
 
   <!-- Custom styles for this template-->
   <link href="../bootstrap/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- Custom styles for this page -->
+  <link href="../bootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   
 
@@ -205,21 +207,22 @@
           </div>
 
           <!-- Content Row -->
-          <div class="container-fluid">
 
 
             <div class="form-group row col-md-12">
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-edit"> Editar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger1"><i class="fas fa-edit"> Editar</i></button>
               </div>
               
               <div class="form-group col-md-4">
                 <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-trash"> Excluir</i></button>
               </div>
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-plus"> Adicionar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger2"><i class="fas fa-plus"> Adicionar</i></button>
               </div>
             </div>
+
+           
 
             <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -227,7 +230,7 @@
             </div>
 
             <div class="card-body">
-              <div class="table-responsive">
+              <div class="table table-responsive-sm">
                 <table class="table table-unbordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -239,6 +242,7 @@
                       <th>Email</th>
                       <th>Telefone</th>
                       <th>Permissão</th>
+                      <th>Verificação</th>
                     </tr>
                   </thead>
                   <tfoot>
@@ -251,20 +255,10 @@
                       <th>Email</th>
                       <th>Telefone</th>
                       <th>Permissão</th>
+                      <th>Verificação</th>
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                    </tr>
-                    
                     
                   </tbody>
                 </table>
@@ -274,7 +268,6 @@
                     
         <!-- /.container-fluid -->
 
-          </div>
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -317,6 +310,179 @@
     </div>
   </div>
 
+  <!-- Edit User Modal -->
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalLarger1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel1" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar Usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="container-fluid">
+                    <form class="user" action="../model/validaUsuarioEmpresa.php" method="POST">
+                
+                      <div class="form-group row">
+                        
+
+                        <div class="col-sm-5">
+                          <select class="form-control" id="nomes" name="nomes">
+                            <option selected="">Selecione um nome</option>
+                          </select>
+                          
+                        </div>
+                      </div>
+                      <div class="form-group row">
+
+                        <div class="col-sm-7 mb-3 mb-sm-0">
+                          <input type="text" class="form-control" name="editnome" id="editnome" placeholder="Nome" required="">
+                        </div>
+                  
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control" name="editcpf" id="editcpf" placeholder="CPF 000.000.000-00" required="">
+                        </div>
+                      </div>
+                
+                      <div class="form-group row">
+                        <div class="col-sm-5">
+                          <input type="email" class="form-control" name="editemail" id="editemail" placeholder="Email Address" required="">
+                        </div>
+
+                        <div class="col-sm-3">
+                            <select class="form-control" name="editpermissao" id="editpermissao">
+                              <option>Nivel de permissão</option>
+                              <option value="SIM">SIM</option>
+                              <option value="NÂO" selected>NÃO</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" name="editcnh" id="editcnh" placeholder="CNH">
+                        </div>
+                      </div>
+                             
+                
+                <div class="form-group row">
+                  
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <input type="password" class="form-control" name="editpassword" id="editpassword" placeholder="Password" required="">
+                  </div>
+                
+
+                <div class="col-sm-4 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" name="edittelefone" id="edittelefone" placeholder="Telefone" required>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="editmotorista" name="editmotorista">
+                       <label class="custom-control-label" for="motorista">Motorista?</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-success" name="editsalvar" id="editsalvar" onclick="" >Save changes</button>
+                        </div>
+                </div>
+              </form>
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+  <!-- Register User Modal -->
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalLarger2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel2" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Adicionar Novo Usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="container-fluid">
+                    <form class="user" action="../model/validaUsuarioEmpresa.php" method="POST">
+                
+                      <div class="form-group row">
+                  
+                        <div class="col-sm-7 mb-3 mb-sm-0">
+                          <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required="">
+                        </div>
+                  
+                        <div class="col-sm-5">
+                          <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF 000.000.000-00" required="">
+                        </div>
+                      </div>
+                
+                      <div class="form-group row">
+                        <div class="col-sm-9">
+                          <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required="">
+                        </div>
+
+                        <div class="col-sm-3">
+                            <select class="form-control" name="permissao" id="permissao">
+                              <option>Nivel de permissão</option>
+                              <option value="SIM">SIM</option>
+                              <option value="NÂO" selected>NÃO</option>
+                            </select>
+                        </div>
+                      </div>
+                             
+                
+                <div class="form-group row">
+                  
+                  <div class="col-sm-6 mb-3 mb-sm-0">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
+                  </div>
+                  
+                  <div class="col-sm-6">
+                    <input type="password" class="form-control " name="repeatPassword" id="repeatPassword" placeholder="Repeat Password" required>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input" id="motorista" name="motorista">
+                       <label class="custom-control-label" for="motorista">Motorista?</label>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-5">
+                    <input type="text" class="form-control" name="cnh" id="cnh" placeholder="CNH">
+                  </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-success" name="salvar" id="salvar" onclick="" >Save changes</button>
+                        </div>
+                    </form>
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+  <!-- Consulta funcionarios-->
+  <script type="text/javascript" src="../js/carregaFuncionarios.js"></script>
   <!-- Bootstrap core JavaScript-->
   <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
   <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -327,12 +493,9 @@
   <!-- Custom scripts for all pages-->
   <script src="../bootstrap/js/sb-admin-2.min.js"></script>
 
-  <!-- Page level plugins -->
-  <script src="../bootstrap/vendor/chart.js/Chart.min.js"></script>
 
-  <!-- Page level custom scripts -->
-  <script src="../bootstrap/js/demo/chart-area-demo.js"></script>
-  <script src="../bootstrap/js/demo/chart-pie-demo.js"></script>
+  <script type="text/javascript"> carregaFuncionarios(); </script>
+  <script type="text/javascript"> carregaNomeFuncionarios(); </script>
 
   <script type="text/javascript">
     function mostrarMensagem(){

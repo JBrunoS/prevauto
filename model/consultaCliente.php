@@ -8,6 +8,7 @@ $idade;
 $email;
 $senha;
 $telefone;
+$empresa;
 $indice = 0;
 
   if (isset($_POST['login'])){
@@ -19,6 +20,7 @@ $indice = 0;
                   
       while($row = $stmt->fetch()) {  
         json_encode(array("id" => $idcliente = $row['id_usuario'],
+          "empresa" => $row['empresa'],
         "nome" => $row['nome_usuario'],
         "cpf" => $row['cpf'],
         "email" => $row['email'],
@@ -29,6 +31,7 @@ $indice = 0;
         $idade = $row['cpf'];
         $email = $row['email'];
         $telefone = $row['telefone'];
+        $empresa = $row['empresa'];
 
         $indice ++;
         
@@ -37,6 +40,7 @@ $indice = 0;
         $_SESSION['cpf'] = $idade;
         $_SESSION['email'] = $email; 
         $_SESSION['telefone'] = $telefone;
+        $_SESSION['empresa'] = $empresa;
       } 
       if (!isset($_SESSION['id_usuario']) || $indice == 0) {
         echo "<script> alert('Usuário não cadastrado!'); </script>";
