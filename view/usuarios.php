@@ -215,7 +215,7 @@
               </div>
               
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info"><i class="fas fa-trash"> Excluir</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger3"><i class="fas fa-trash" > Excluir</i></button>
               </div>
               <div class="form-group col-md-4">
                 <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger2"><i class="fas fa-plus"> Adicionar</i></button>
@@ -309,6 +309,43 @@
       </div>
     </div>
   </div>
+
+  <!-- Delete User Modal -->
+
+  <div class="modal fade bd-example-modal-lg" id="exampleModalLarger3" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel3" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Editar Usuário</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <div class="row">
+                  <div class="container-fluid">
+                    <form class="user" action="../model/validaUsuarioEmpresa.php" method="POST">
+                      <div class="list-group" id="lista" name="lista">
+                        
+                      </div>
+                        
+
+                        
+
+                <div class="form-group row">
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-success" name="editsalvar" id="editsalvar" onclick="" >Save changes</button>
+                        </div>
+                </div>
+              </form>
+                  </div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
 
   <!-- Edit User Modal -->
 
@@ -496,6 +533,7 @@
 
   <script type="text/javascript"> carregaFuncionarios(); </script>
   <script type="text/javascript"> carregaNomeFuncionarios(); </script>
+  <script type="text/javascript"> carregaNomeFuncionariosLista(); </script>
 
   <script type="text/javascript">
     function mostrarMensagem(){
