@@ -167,9 +167,10 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><i class="fas fa-user-circle "> </i><?php 
+                <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><?php 
                   echo " " . $_SESSION['nome_usuario'];
                   ?></span>
+                  <img class="img-profile rounded-circle" src="../user.png">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -211,14 +212,14 @@
 
             <div class="form-group row col-md-12">
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger1"><i class="fas fa-edit"> Editar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" id="btnEditar" name="btnEditar" data-toggle="modal" data-target="#exampleModalLarger1"><i class="fas fa-edit"> Editar</i></button>
               </div>
               
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger3"><i class="fas fa-trash" > Excluir</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" id="btnExcluir" name="btnExcluir" data-toggle="modal" data-target="#exampleModalLarger3"><i class="fas fa-trash" > Excluir</i></button>
               </div>
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info" data-toggle="modal" data-target="#exampleModalLarger2"><i class="fas fa-plus"> Adicionar</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" id="btnAdicionar" name="btnAdicionar" data-toggle="modal" data-target="#exampleModalLarger2"><i class="fas fa-plus"> Adicionar</i></button>
               </div>
             </div>
 
@@ -336,7 +337,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-success" name="editsalvar" id="editsalvar" onclick="" >Save changes</button>
+                          <button type="submit" class="btn btn-success" name="deletesalvar" id="deletetsalvar" onclick="" >Save changes</button>
                         </div>
                 </div>
               </form>
@@ -393,7 +394,7 @@
                             <select class="form-control" name="editpermissao" id="editpermissao">
                               <option>Nivel de permissão</option>
                               <option value="SIM">SIM</option>
-                              <option value="NÂO" selected>NÃO</option>
+                              <option value="NAO" selected>NÃO</option>
                             </select>
                         </div>
                         <div class="col-sm-4">
@@ -532,13 +533,22 @@
 
 
   <script type="text/javascript"> carregaFuncionarios(); </script>
-  <script type="text/javascript"> carregaNomeFuncionarios(); </script>
-  <script type="text/javascript"> carregaNomeFuncionariosLista(); </script>
+
 
   <script type="text/javascript">
     function mostrarMensagem(){
       alert("Botão clicado!");
     }
+
+    $(document).ready(function(){
+      var idpermissao = '<?php echo $_SESSION['permissao']; ?>' ;
+
+      if (idpermissao == "NAO") {
+        $('#btnAdicionar').attr('disabled', 'disabled');
+        $('#btnExcluir').attr('disabled', 'disabled');
+        $('#btnEditar').attr('disabled', 'disabled');
+      }
+    });
   </script>
 
 </body>

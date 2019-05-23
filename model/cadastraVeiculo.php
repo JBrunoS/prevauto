@@ -15,7 +15,8 @@ include 'conexao.php';
         cor,
         placa,
         renavan, 
-        quilometragem)
+        quilometragem, 
+        empresa)
 
         VALUES (
             '$_SESSION[id_usuario]',
@@ -30,7 +31,8 @@ include 'conexao.php';
             '$_SESSION[cor]',
             '$_SESSION[placa]',
             '$_SESSION[renavan]',
-            '$_SESSION[kms]')";
+            '$_SESSION[kms]',
+            '$_SESSION[empresa]')";
 
         $confirma = $mysqli->query($sql_code) or die($mysqli->error);
         

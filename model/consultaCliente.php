@@ -9,6 +9,7 @@ $email;
 $senha;
 $telefone;
 $empresa;
+$permissao;
 $indice = 0;
 
   if (isset($_POST['login'])){
@@ -24,7 +25,8 @@ $indice = 0;
         "nome" => $row['nome_usuario'],
         "cpf" => $row['cpf'],
         "email" => $row['email'],
-        "telefone" => $row['telefone']));
+        "telefone" => $row['telefone'],
+        "permissao" => $row['permissao']));
 
         $idcliente = $row['id_usuario'];
         $nome = $row['nome_usuario'];
@@ -32,6 +34,7 @@ $indice = 0;
         $email = $row['email'];
         $telefone = $row['telefone'];
         $empresa = $row['empresa'];
+        $permissao = $row['permissao'];
 
         $indice ++;
         
@@ -41,6 +44,7 @@ $indice = 0;
         $_SESSION['email'] = $email; 
         $_SESSION['telefone'] = $telefone;
         $_SESSION['empresa'] = $empresa;
+        $_SESSION['permissao'] = $permissao;
       } 
       if (!isset($_SESSION['id_usuario']) || $indice == 0) {
         echo "<script> alert('Usuário não cadastrado!'); </script>";
