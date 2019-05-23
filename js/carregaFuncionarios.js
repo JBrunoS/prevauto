@@ -43,8 +43,8 @@ function carregaNomeFuncionariosLista(){
 		dataType: 'json',	//Definimos o tipo de retorno
 		url: '../model/consultaFuncionarios.php',//Definindo o arquivo onde serão buscados os dados
 		success: function(dados){
-			$('#lista').append('<button type="button" class="list-group-item list-group-item-action active disabled">' + dados[0].nome_usuario +
-  '</button>');
+			$('#lista').append('<button type="button" class="list-group-item list-group-item-action active disabled">' + dados[0].nome_usuario + '       Não pode excluir' + '</button>');
+
 			for(var i=1;dados.length>i;i++){
 				//Adicionando registros retornados na tabela
 				$('#lista').append('<button type="button" class="list-group-item list-group-item-action">' + dados[i].nome_usuario +
