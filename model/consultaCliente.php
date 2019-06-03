@@ -1,7 +1,7 @@
 <?php
 session_start();
 include 'conexao.php';
-
+$_SESSION['password'] = "xxj123";
 $idcliente;
 $nome;
 $idade;

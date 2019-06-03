@@ -166,7 +166,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><?php 
-                  echo " " . $_SESSION['nome_usuario'];
+                  echo " " . $_SESSION['nome_usuario'] . " - " . $_SESSION['empresa'];
                   ?></span>
                   <img class="img-profile rounded-circle" src="../user.png">
               </a>
@@ -201,97 +201,84 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+          <div class="d-sm-flex align-items-center justify-content-between mb-3">
             <h1 class="h3 mb-0 text-gray-800">Manutenção</h1>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-truck"></i> <i class="fas fa-check"></i> Registrar Saída de Veiculo</button>
+            <div class="container">
+            <div class="row justify-content-end">
+              <div class="form-group col-sm-4">
+                <button type="button" class="form-control btn btn-info" id="btnEditar" name="btnEditar" data-toggle="modal" data-target="#exampleModalLarger1"><i class="fas fa-truck"></i> Registrar Chegada de Veículos</button>
+              </div>
+              
+              <div class="form-group col-sm-4">
+                <button type="button" class="form-control btn btn-info" id="btnExcluir" name="btnExcluir" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-truck" ></i> Registrar Saída de Veículos</button>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <form class="col-sm-6">
-            <select name="servicos" class="form-control form-control-user" style="color:DodgerBlue;">
-              <option selected></option>
-              <option value="">Abastecimento</option>
-              <option value="">Lavagem</option>
-              <option value="" disabled>---------</option>
-              <option value="" disabled>PNEUS E RODAS</option>
-              <option value="">Alinhamento</option>
-              <option value="">Balanceamento</option>
-              <option value="">Rodízio</option>
-              <option disabled>SISTEMA DE FREIOS</option>
-              <option value="">Troca de fluídos de freios</option>
-              <option value="">Troca de pastilhas de freios</option>
-              <option value="">Sensor de pastilhas</option>
-              <option value="">Retifica ou troca de disco de freios</option>
-              <option value="">Serviço e reparo de sistemas ABS</option>
-              <option disabled>SUSPENSÃO</option>
-              <option value="">Troca de amortecedores e molas</option>
-              <option value="">Troca e repado de suspensão a ar</option>
-              <option value="">Troca da barra de direção</option>
-              <option value="">Troca do braço axial</option>
-              <option value="">Troca da bandeja</option>
-              <option disabled>TRANSMISSÃO, CÂMBIO E EMBREAGEM</option>
-              <option value="">Troca de oléo</option>
-              <option value="">Troca do kit de embreagem (quando transmissão manual)</option>
-              <option value="">Troca de óleo de câmbio</option>
-              <option value="">Regulagem de transmissão</option>
-              <option value="">Reparo de Caixa de transmissão (Automática e Manual)</option>
-              <option value="">Reparo em Corpo de Válvulas</option>
-              <option value="">Reparo de Solenoide</option>
-              <option value="">Conversor de torque</option>
-              <option value="">Planetárias – Válvulas</option>
-              <option value="">Calibração eletrônica</option>
-              <option value="">Transmissão completa</option>
-            </select>
-          
+
           </div>
+            
+
           
-            <div class="row">
-              <div class="container-fluid">
-                
+        <div class="body">
+          <div class="row">
+            <div class="container-fluid">
               <div class="user">
-                <div class="form-group row">
-                  <div class="col-sm-3 mb-3 mb-sm-0">
-                    <label for="placa">Placa</label>
-                    <input type="text" class="form-control form-control-user" id="placa" placeholder="Placa do veículo">
-                  </div>
-                  <div class="col-sm-3">
-                    <label for="veiculo">Veiculo</label>
-                    <input type="text" class="form-control form-control-user" id="veiculo" placeholder="Veiculo">
-                  </div>
-                
-                  <div class="col-sm-3">
-                    <label for="kms">Quilometragem</label>
-                    <input type="text" class="form-control form-control-user" id="kms" placeholder="Quilometragem">
-                  </div>
-
-                  <div class="col-sm-3">
-                    <label for="data">Data</label>
-                    <input type="date" class="form-control form-control-user" id="data" placeholder="00/00/0000">
-                  </div>
-                </div>
-
-                <div class="form-group row">
-                  <div class="col-sm-4 mb-3 mb-sm-0">
-                    <label for="motorista">Motorista</label>
-                    <input type="text" class="form-control form-control-user" id="motorista" placeholder="Motorista">
-                  </div>
-                  <div class="col-sm-4">
-                    <label for="valor">Valor</label>
-                    <input type="text" class="form-control form-control-user" id="valor" placeholder="R$ 0,00">
-                  </div>
-                </div>
-
-                <div class="d-flex justify-content-start">
-                  <button type="button" class="btn btn-primary btn-user"><i class="fas fa-save"></i> 
-                  Salvar Alterações
-                </button>
-                </div>
-                
-                <hr>
-              </div>
-              </form>
-              </div>
-          </div>
+                <form class="user">
+                  
+                  <div class="form-group row col-sm-4">
+                    <select name="servicos" class="form-control" id="servicos" style="color:DodgerBlue;">
+                      <option selected disabled></option>
+                    </select>
           
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-3 mb-3 mb-sm-0">
+                      <label for="placa">Placa</label>
+                      <select name="placas" id="placas" class="form-control">
+                        <option selected></option>
+                      </select>
+                    </div>
+
+                    <div class="col-sm-3">
+                      <label for="veiculo">Veiculo</label>
+                      <input type="text" name="veiculo1" id="veiculo1" class="form-control">
+                    </div>
+                
+                    <div class="col-sm-3">
+                      <label for="kms">Quilometragem</label>
+                      <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                    </div>
+
+                    <div class="col-sm-3">
+                      <label for="data">Data</label>
+                      <input type="date" class="form-control" id="data" name="data" placeholder="00/00/0000">
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <div class="col-sm-4 mb-3 mb-sm-0">
+                     <label for="motorista">Motorista</label>
+                      <select name="motorista1" id="motorista1" class="form-control">
+                        <option selected></option>
+                      </select>
+                    </div>
+                    <div class="col-sm-4">
+                      <label for="valor">Valor</label>
+                      <input type="text" class="form-control" id="valor" placeholder="R$ 0,00">
+                    </div>
+                  </div>
+
+                  <div class="d-flex justify-content-start">
+                    <button type="button" class="btn btn-primary" id="salvarServico" name="salvarServico"><i class="fas fa-save"></i> 
+                      Salvar Alterações
+                    </button>
+                  </div>
+              </form>
+            </div>    
+          </div>
+        </div>
+          </div>
 
         </div>
         <!-- /.container-fluid -->
@@ -330,47 +317,117 @@
                   <div class="row">
                     <div class="container-fluid">
                   
-                      <form class="user">
+                      <form class="user" action="" method="POST">
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="placa">Placa</label>
-                            <input type="text" class="form-control" id="placa" placeholder="Placa do veículo">
+                            <select name="placas1" id="placas1" class="form-control" required="">
+                               <option selected disabled=""></option>
+                            </select>
                           </div>
                           <div class="col-sm-6">
                             <label for="veiculo">Veiculo</label>
-                            <input type="text" class="form-control " id="veiculo" placeholder="Veiculo">
+                            <input type="text" name="veiculo" id="veiculo" class="form-control" required="">
                           </div>
                         </div>
                         
                         <div class="form-group row">
                           <div class="col-sm-6">
-                            <label for="kms">Destino - Quilometros</label>
-                            <input type="text" class="form-control" id="kms" placeholder="Quilometragem">
+                            <label for="kms">Quilometragem Atual</label>
+                            <input type="text" class="form-control" id="kms" placeholder="Quilometragem" required=""onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                           </div>
 
                           <div class="col-sm-6">
                             <label for="hora">Horário</label>
-                            <input type="time" class="form-control " id="hora" placeholder="">
+                            <input type="time" class="form-control " id="hora" placeholder="" required="">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-sm-6">
                             <label for="motorista">Motorista</label>
-                            <select name="motorista" class="form-control" style="color:DodgerBlue;">
-                              <option selected >Selecione o motorista</option>
-                              <option></option>
+                            <select name="motorista" id="motorista" class="form-control" style="color:DodgerBlue;" required="">
+                              <option selected disabled="">Selecione o motorista</option>
                             </select>
                           </div>
                         </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+                        </div>
+
                     </form>
                   </div>
               </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+            
+            </div>
+          </div>
+        </div>
+
+
+        <!-- Register arrived Modal-->
+        <!-- Modal -->
+        <div class="modal fad bg-modal-example-lg" id="exampleModalLarger1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
               </div>
+
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="container-fluid">
+                  
+                      <form class="user" action="" method="POST">
+                        <div class="form-group row">
+                          <div class="col-sm-6 mb-3 mb-sm-0">
+                            <label for="placa">Placa</label>
+                            <select name="placa2" id="placa2" class="form-control" required="">
+                               <option selected disabled=""></option>
+                            </select>
+                          </div>
+                          <div class="col-sm-6">
+                            <label for="veiculo">Veiculo</label>
+                            <input type="text" name="veiculo2" id="veiculo2" class="form-control" required="">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          <div class="col-sm-6">
+                            <label for="kms">Quilometragem Atual</label>
+                            <input type="text" class="form-control" id="kms2" name="kms2" placeholder="Quilometragem" required=""onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                          </div>
+
+                          <div class="col-sm-6">
+                            <label for="hora">Horário</label>
+                            <input type="time" class="form-control " id="hora1" placeholder="" required="">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          <div class="col-sm-6">
+                            <label for="motorista">Motorista</label>
+                            <select name="motorista" id="motorista2" class="form-control" style="color:DodgerBlue;" required="">
+                              <option selected disabled="">Selecione o motorista</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <button type="submit" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+                        </div>
+
+                    </form>
+                  </div>
+              </div>
+            </div>
+            
             </div>
           </div>
         </div>
@@ -399,6 +456,12 @@
     </div>
   </div>
 
+    <!-- Consulta serviços-->
+  <script type="text/javascript" src="../js/carregaServicos.js"></script>
+
+    <!-- Consulta veiculos -->
+  <script type="text/javascript" src="../js/carregaVeiculos"></script>  
+
   <!-- Bootstrap core JavaScript-->
   <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
   <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -408,6 +471,9 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../bootstrap/js/sb-admin-2.min.js"></script>
+
+  <script type="text/javascript"> carregaServicos();  </script>
+  <script type="text/javascript"> carregaVeiculos(); </script>
 
 </body>
 

@@ -28,7 +28,7 @@ $indice = 0;
     
     
 
-    $stmt = $conn->prepare("SELECT * FROM usuario where email like :email"); 
+    $stmt = $conn->prepare("SELECT * FROM usuario where email =  '$email' OR cpf = '$cpf'"); 
     $stmt->execute(array('email' => $email));
                   
       while($row = $stmt->fetch()) {  
@@ -39,7 +39,7 @@ $indice = 0;
         echo "<script> location.href='cadastraFuncionario.php'; </script>";
         
       }else{
-        echo "<script> alert('Usuário já se encontra cadastrado! Fazer Login'); </script>";
+        echo "<script> alert('Já existe um usuário cadastrado no sistema com esse email ou CPF'); </script>";
         echo "<script> location.href='../view/usuarios.php'; </script>";
       }
   }

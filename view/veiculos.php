@@ -181,7 +181,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><?php 
-                  echo " " . $_SESSION['nome_usuario'];
+                  echo " " . $_SESSION['nome_usuario'] . " - " . $_SESSION['empresa'];
                   ?></span>
                   <img class="img-profile rounded-circle" src="../user.png">
               </a>
@@ -218,7 +218,7 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Veículos</h1>
-            <a href="#" id="btnNovo" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-plus"></i> Adicionar Novo</a>
+            <button type="button" name="btnNovo" id="btnNovo" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalLarger"><i class="fas fa-plus"></i> Adicionar Novo</button>
           </div>
 
           <!-- Content Row -->
@@ -234,6 +234,7 @@
                     <tr>
                       <th>Veículo</th>
                       <th>Placa</th>
+                      <th>Cor</th>
                       <th>Quilometragem</th>
                       <th>Detalhes</th>
                     </tr>
@@ -242,6 +243,7 @@
                     <tr>
                       <th>Veículo</th>
                       <th>Placa</th>
+                      <th>Cor</th>
                       <th>Quilometragem</th>
                       <th>Detalhes</th>
                     </tr>
@@ -290,10 +292,7 @@
         <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <form action="veiculos.php" method="POST">
-            <button class="btn btn-primary" type="submit" name="btnsair" id="btnsair">
-            <a class="" href="login.html">Logout</a></button> 
-          </form>
+          <a class="btn btn-primary" href="login.html">Logout</a>
         </div>
       </div>
     </div>
@@ -326,7 +325,7 @@
                           </div>
                           <div class="col-sm-3">
                             <label for="kms">Quilometragem</label>
-                            <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" required="">
+                            <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" required="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                           </div>
                         </div>
                         
@@ -380,11 +379,11 @@
                           
                           <div class="col-sm-4">
                             <label for="renavan">Número Renavan</label>
-                            <input type="text" class="form-control " id="renavan" name="renavan" placeholder="" required="">
+                            <input type="text" class="form-control " id="renavan" name="renavan" placeholder="" required="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                           </div>
                           <div class="col-sm-4">
                             <label for="chassi">Número Chassi</label>
-                            <input type="text" class="form-control " name="chassi" id="chassi" placeholder="" required="">
+                            <input type="text" class="form-control " name="chassi" id="chassi" placeholder="" required="" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                           </div>
                           <div class="col-sm-4">
                             <label for="motor">Número Motor</label>
@@ -400,6 +399,109 @@
                   </div>
               </div>
             </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal exibe informações do veículo-->
+
+        <div class="modal fade bd-example-modal-lg" id="exibeVeiculo" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLAbel" aria-hidden="true">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Dados do Veículo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <div class="row">
+                    <div class="container-fluid">
+                  
+                      <form class="user" action="" method="">
+                        <div class="form-group row">
+                          <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="placa">Placa</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infoplaca" name="infoplaca">
+                          </div>
+
+
+                          <div class="col-sm-4">
+                            <label for="veiculo">Veiculo</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infoveiculo" name="infoveiculo">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="kms">Quilometragem</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infokms" name="infokms">
+                          </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                          
+
+                          <div class="col-sm-4">
+                            <label for="dataModelo">Data Modelo</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infodataModelo" name="infodataModelo">
+                          </div>            
+                
+
+                          <div class="col-sm-4">
+                            <label for="dataFabricacao">Ano Fabricação</label>
+                            
+                              <input type="text" readonly class="form-control form-control-plaintext" value="" id="infodataFabricacao" name="infodataFabricacao" >
+                            
+                          </div>
+                            
+
+                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="tipo">Tipo</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infotipo" name="infotipo" >
+                          </div>
+                            
+                        </div>
+
+                        <div class="form-group row">
+                          
+                          <div class="col-sm-4">
+                            <label for="cor">Cor</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infocor" name="infocor">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="combustivel">Combustível</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infocombustivel" name="infocombustivel">
+                          </div>
+                          <div class="col-sm-4 mb-3 mb-sm-0">
+                            <label for="especie">Espécie</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="infoespecie" name="infoespecie">
+                          </div>
+                        </div>
+
+                        <div class="form-group row">
+                          
+                          <div class="col-sm-4">
+                            <label for="renavan">Número Renavan</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" id="inforenavan" name="inforenavan">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="chassi">Número Chassi</label>
+                            <input type="text" readonly class="form-control form-control-plaintext" value="" name="infochassi" id="infochassi">
+                          </div>
+                          <div class="col-sm-4">
+                            <label for="motor">Número Motor</label>
+                            <input type="text" readonly class=" form-control form-control-plaintext" value="" name="infomotor" id="infomotor">
+                          </div>
+                        </div>
+
+                        
+                    </form>
+                  </div>
+              </div>
+            </div>
+
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary pull-center" data-dismiss="modal" >Fechar</button>
+                <button type="button" class="btn btn-success pull-right" name="infosalvar" id="infosalvar"><i class="fas fa-download "></i> Baixar Arquivo</button>
+              </div>
             </div>
           </div>
         </div>
@@ -447,25 +549,50 @@
               format: 'L'
             });
         })
-  </script>
 
-  <script type="text/javascript">
-    function mostrarMensagem(){
-
-    $('#dataTable tbody tr').each(function(index,td){
-          var nome = $(td).find(".veiculo");
-          //nome = $(td).text();
-          alert(nome);
+    $(document).ready(function(){
+      var idpermissao = '<?php echo $_SESSION['permissao']; ?>' ;
+      if (idpermissao == "NAO") {
+        $("#btnNovo").attr('disabled', 'disabled');
+      }
     });
-}
-
   </script>
+
 
   <script type="text/javascript">
     $(function(){
       $("#placa").mask("aaa-9999");
       $("#kms").mask("");
     });
+  </script>
+
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $(document).on('click', 'button[data-role=update]', function(){
+        var id = $(this).data('id');
+
+        $.post( "../model/exibeInfoVeiculos.php", {id: id}).done(function( data ) {
+        var x = JSON.parse(data);
+
+        $("#infoveiculo").val(x.modelo);
+        $("#infoplaca").val(x.placa);
+        $("#infokms").val(x.quilometragem);
+        $("#infodataModelo").val(x.ano_modelo);
+        $("#infodataFabricacao").val(x.ano_fabricacao);
+        $("#infotipo").val(x.tipo);
+        $("#infocor").val(x.cor);
+        $("#infocombustivel").val(x.combustivel);
+        $("#infoespecie").val(x.especie);
+        $("#inforenavan").val(x.renavan);
+        $("#infochassi").val(x.numero_chassi);
+        $("#infomotor").val(x.numero_motor);
+        
+        
+    });
+
+      })
+    });
+
   </script>
 
 </body>

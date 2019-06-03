@@ -168,7 +168,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><?php 
-                  echo " " . $_SESSION['nome_usuario'];
+                  echo " " . $_SESSION['nome_usuario'] . " - " . $_SESSION['empresa'];
                   ?></span>
                   <img class="img-profile rounded-circle" src="../user.png">
               </a>
@@ -324,26 +324,18 @@
               </div>
               <div class="modal-body">
                 <div class="row">
-                  <div class="container-fluid">
-                    <form class="user" action="../model/validaUsuarioEmpresa.php" method="POST">
-                      <div class="list-group" id="lista" name="lista">
-                        
-                      </div>
-                        
-
-                        
-
-                <div class="form-group row">
-
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-success" name="deletesalvar" id="deletetsalvar" onclick="" >Save changes</button>
-                        </div>
-                </div>
-              </form>
+                  <div class="container-fluid" id="janela">
+                    <div class="list-group" id="lista">
+                      <h3 class="texr text-dark-800 text-danger">Ao clicar no nome, o usuário será excluído. Cuidado!</h3>
+                      
+                    </div>
                   </div>
               </div>
             </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" name="deletesalvar" id="deletesalvar" onclick="" >Save changes</button>
+              </div>
             </div>
           </div>
         </div>
@@ -362,35 +354,37 @@
               <div class="modal-body">
                 <div class="row">
                   <div class="container-fluid">
-                    <form class="user" action="../model/validaUsuarioEmpresa.php" method="POST">
+                    <form class="user" action="../model/editaFuncionario.php" method="POST" id="formulario">
                 
                       <div class="form-group row">
-                        
-
                         <div class="col-sm-5">
                           <select class="form-control" id="nomes" name="nomes">
-                            <option selected="">Selecione um nome</option>
+                            <option selected="" disabled="">Selecione um nome</option>
                           </select>
-                          
                         </div>
                       </div>
-                      <div class="form-group row">
 
+                      <div class="form-group row">
+                        <input type="hidden" name="editid" id="editid">
                         <div class="col-sm-7 mb-3 mb-sm-0">
+                          <label for="editnome">Nome</label>
                           <input type="text" class="form-control" name="editnome" id="editnome" placeholder="Nome" required="">
                         </div>
                   
                         <div class="col-sm-5">
+                          <label for="editcpf">CPF</label>
                           <input type="text" class="form-control" name="editcpf" id="editcpf" placeholder="CPF 000.000.000-00" required="">
                         </div>
                       </div>
                 
                       <div class="form-group row">
                         <div class="col-sm-5">
+                          <label for="editemail">Email</label>
                           <input type="email" class="form-control" name="editemail" id="editemail" placeholder="Email Address" required="">
                         </div>
 
                         <div class="col-sm-3">
+                          <label for="editpermissao">Nível de Permissão</label>
                             <select class="form-control" name="editpermissao" id="editpermissao">
                               <option>Nivel de permissão</option>
                               <option value="SIM">SIM</option>
@@ -398,41 +392,45 @@
                             </select>
                         </div>
                         <div class="col-sm-4">
-                          <input type="text" class="form-control" name="editcnh" id="editcnh" placeholder="CNH">
+                          <label for="editcnh">CNH</label>
+                          <input type="text" class="form-control" name="editcnh" id="editcnh" placeholder="CNH" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                         </div>
                       </div>
                              
                 
                 <div class="form-group row">
-                  
                   <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="password" class="form-control" name="editpassword" id="editpassword" placeholder="Password" required="">
-                  </div>
-                
-
-                <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="edittelefone" id="edittelefone" placeholder="Telefone" required>
+                    <label for="editpassword">Senha</label>
+                    <input type="text" class="form-control" name="editpassword" id="editpassword" placeholder="Password" required="">
                   </div>
 
-                  <div class="col-sm-3">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="editmotorista" name="editmotorista">
-                       <label class="custom-control-label" for="motorista">Motorista?</label>
-                    </div>
+                  <div class="col-sm-4 mb-3 mb-sm-0">
+                    <label for="edittelefone">Telefone</label>
+                    <input type="text" class="form-control" name="edittelefone" id="edittelefone" placeholder="Telefone" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                  </div>
+
+                  <div class="col-sm-4">
+                    <label for="editmotorista">Motorista</label>
+                            <select class="form-control" name="editmotorista" id="editmotorista">
+                              <option>Nivel de permissão</option>
+                              <option value="SIM">SIM</option>
+                              <option value="NAO" selected>NÃO</option>
+                            </select>
                   </div>
                 </div>
 
-                <div class="form-group row">
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-success" name="editsalvar" id="editsalvar" onclick="" >Save changes</button>
+              </div>
 
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-success" name="editsalvar" id="editsalvar" onclick="" >Save changes</button>
-                        </div>
+                </form>
                 </div>
-              </form>
-                  </div>
+              
+                  
               </div>
             </div>
+              
             </div>
           </div>
         </div>
@@ -456,24 +454,28 @@
                       <div class="form-group row">
                   
                         <div class="col-sm-7 mb-3 mb-sm-0">
+                          <label for="nome">Nome:</label>
                           <input type="text" class="form-control" name="nome" id="nome" placeholder="Nome" required="">
                         </div>
                   
                         <div class="col-sm-5">
+                          <label for="cpf">CPF:</label>
                           <input type="text" class="form-control" name="cpf" id="cpf" placeholder="CPF 000.000.000-00" required="">
                         </div>
                       </div>
                 
                       <div class="form-group row">
                         <div class="col-sm-9">
+                          <label for="email">Email:</label>
                           <input type="email" class="form-control" name="email" id="email" placeholder="Email Address" required="">
                         </div>
 
                         <div class="col-sm-3">
+                          <label for="permissao">Nível de Permissão:</label>
                             <select class="form-control" name="permissao" id="permissao">
-                              <option>Nivel de permissão</option>
+                              <option disabled="">Selecione</option>
                               <option value="SIM">SIM</option>
-                              <option value="NÂO" selected>NÃO</option>
+                              <option value="NAO" selected>NÃO</option>
                             </select>
                         </div>
                       </div>
@@ -482,10 +484,12 @@
                 <div class="form-group row">
                   
                   <div class="col-sm-6 mb-3 mb-sm-0">
+                    <label for="password">Senha:</label>
                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required="">
                   </div>
                   
                   <div class="col-sm-6">
+                    <label for="repeatPassword">Confirmação de senha:</label>
                     <input type="password" class="form-control " name="repeatPassword" id="repeatPassword" placeholder="Repeat Password" required>
                   </div>
                 </div>
@@ -493,34 +497,67 @@
                 <div class="form-group row">
                   
                   <div class="col-sm-4 mb-3 mb-sm-0">
-                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required>
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                   </div>
 
                   <div class="col-sm-3">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="motorista" name="motorista">
-                       <label class="custom-control-label" for="motorista">Motorista?</label>
-                    </div>
+                    <label for="motorista">Motorista:</label>
+                    <select class="form-control" name="motorista" id="motorista">
+                      <option disabled="">Selecione</option>
+                      <option value="SIM">SIM</option>
+                      <option value="NAO" selected>NÃO</option>
+                    </select>
                   </div>
 
                   <div class="col-sm-5">
-                    <input type="text" class="form-control" name="cnh" id="cnh" placeholder="CNH">
+                    <label for="cnh">CNH:</label>
+                    <input type="text" class="form-control" name="cnh" id="cnh" placeholder="CNH" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                   </div>
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <button type="submit" class="btn btn-success" name="salvar" id="salvar" onclick="" >Save changes</button>
                         </div>
+                </div>
                     </form>
+                  </div>
                   </div>
               </div>
             </div>
             </div>
           </div>
-        </div>
+        
+
+
+        <!-- Confirmação de exclusão de usuário Modal -->
+<div class="modal fade" id="modalExcluir" tabindex="-1" role="dialog" aria-labelledby="TituloModalCentralizado" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="TituloModalCentralizado">Excluir Usuário - Solicitação de Senha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="form-group">
+          <label for="senhaExcluir" >Digite a senha: </label>
+            <input type="password" name="senhaExcluir" id="senhaExcluir" class="form-control">
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" id="btnExcluirFuncionario" name="btnExcluirFuncionario" class="btn btn-primary">Excluir usuário</button>
+      </div>
+    </div>
+  </div>
+</div>
 
   <!-- Consulta funcionarios-->
-  <script type="text/javascript" src="../js/carregaFuncionarios.js"></script>
+  <script type="text/javascript" src="../js/carregaFuncionario.js"></script>
+  <script type="text/javascript" src="../js/solicitaFuncionario.js" ></script>
+  <script type="text/javascript" src="../js/editaFuncionario.js" ></script>
   <!-- Bootstrap core JavaScript-->
   <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
   <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -531,14 +568,62 @@
   <!-- Custom scripts for all pages-->
   <script src="../bootstrap/js/sb-admin-2.min.js"></script>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
 
   <script type="text/javascript"> carregaFuncionarios(); </script>
+  <script type="text/javascript"> mostraNomes(); </script>
+  <script type="text/javascript"> editaFuncionario(); </script>
+  <script type="text/javascript"> verificaNome(); </script>
+
 
 
   <script type="text/javascript">
-    function mostrarMensagem(){
-      alert("Botão clicado!");
+    $(function(){
+      $("#editcpf").mask("999.999.999-99");
+      $("#cpf").mask("999.999.999-99");
+    });
+  </script>
+
+
+
+  <script type="text/javascript">
+
+    var retorno;
+
+    function consulta(){
+      alert($("#senhaExcluir").val());
     }
+
+    $(document).ready(function(){
+      $(document).on('click', '#btnDelete', function(){
+        console.log($(this).val());
+        retorno = $(this).val();
+        verificaNome(retorno);
+        
+
+        var nome_user = '<?php echo $_SESSION['nome_usuario']; ?>';
+
+        if ($(this).val() == nome_user) { 
+          $(this).attr('disabled', 'disabled');
+          $("#modalExcluir").fadeOut();
+        }
+      });   
+    });
+
+    $("#btnExcluirFuncionario").click(function(){
+    var senha = $("#senhaExcluir").val();
+
+    if (senha == '<?php echo $_SESSION['password'];?>') {
+      verificaNome(retorno);
+    }else{
+      alert("senha não confere");
+    }
+
+    
+  });
+    
+    
 
     $(document).ready(function(){
       var idpermissao = '<?php echo $_SESSION['permissao']; ?>' ;

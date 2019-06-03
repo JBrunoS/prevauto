@@ -164,7 +164,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-dark-800 small form-control bg-light"><?php 
-                  echo " " . $_SESSION['nome_usuario'];
+                  echo " " . $_SESSION['nome_usuario'] . " - " . $_SESSION['empresa'] ;
                   ?></span>
                   <img class="img-profile rounded-circle" src="../user.png">
               </a>
