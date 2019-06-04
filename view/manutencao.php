@@ -223,10 +223,10 @@
           <div class="row">
             <div class="container-fluid">
               <div class="user">
-                <form class="user">
+                <form class="user" action="../model/cadastraServico.php" method="POST">
                   
                   <div class="form-group row col-sm-4">
-                    <select name="servicos" class="form-control" id="servicos" style="color:DodgerBlue;">
+                    <select name="servicos" class="form-control" id="servicos" style="color:DodgerBlue;" required="">
                       <option selected disabled></option>
                     </select>
           
@@ -235,42 +235,42 @@
                   <div class="form-group row">
                     <div class="col-sm-3 mb-3 mb-sm-0">
                       <label for="placa">Placa</label>
-                      <select name="placas" id="placas" class="form-control">
+                      <select name="placas" id="placas" class="form-control" required="">
                         <option selected></option>
                       </select>
                     </div>
 
                     <div class="col-sm-3">
                       <label for="veiculo">Veiculo</label>
-                      <input type="text" name="veiculo1" id="veiculo1" class="form-control">
+                      <input type="text" name="veiculo1" id="veiculo1" class="form-control" required="">
                     </div>
                 
                     <div class="col-sm-3">
                       <label for="kms">Quilometragem</label>
-                      <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                      <input type="text" class="form-control" id="kms" name="kms" placeholder="Quilometragem" onkeypress="return event.charCode >= 48 && event.charCode <= 57" required>
                     </div>
 
                     <div class="col-sm-3">
                       <label for="data">Data</label>
-                      <input type="date" class="form-control" id="data" name="data" placeholder="00/00/0000">
+                      <input type="date" class="form-control" id="data" name="data" placeholder="00/00/0000" required="">
                     </div>
                   </div>
 
                   <div class="form-group row">
                     <div class="col-sm-4 mb-3 mb-sm-0">
                      <label for="motorista">Motorista</label>
-                      <select name="motorista1" id="motorista1" class="form-control">
+                      <select name="motorista1" id="motorista1" class="form-control" required="">
                         <option selected></option>
                       </select>
                     </div>
                     <div class="col-sm-4">
                       <label for="valor">Valor</label>
-                      <input type="text" class="form-control" id="valor" placeholder="R$ 0,00">
+                      <input type="text" class="form-control" id="valor" name="valor" placeholder="R$ 0,00" required="">
                     </div>
                   </div>
 
                   <div class="d-flex justify-content-start">
-                    <button type="button" class="btn btn-primary" id="salvarServico" name="salvarServico"><i class="fas fa-save"></i> 
+                    <button type="submit" class="btn btn-primary" id="salvarServico" name="salvarServico"><i class="fas fa-save"></i> 
                       Salvar Alterações
                     </button>
                   </div>
@@ -317,7 +317,7 @@
                   <div class="row">
                     <div class="container-fluid">
                   
-                      <form class="user" action="" method="POST">
+                      <form class="user" action="../model/cadastraSaidaVeiculo.php" method="POST">
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="placa">Placa</label>
@@ -334,12 +334,12 @@
                         <div class="form-group row">
                           <div class="col-sm-6">
                             <label for="kms">Quilometragem Atual</label>
-                            <input type="text" class="form-control" id="kms" placeholder="Quilometragem" required=""onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                            <input type="text" class="form-control" id="kms1" name="kms1" placeholder="Quilometragem" required=""onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                           </div>
 
                           <div class="col-sm-6">
                             <label for="hora">Horário</label>
-                            <input type="time" class="form-control " id="hora" placeholder="" required="">
+                            <input type="time" class="form-control " id="hora" name="hora" placeholder="" required="">
                           </div>
                         </div>
 
@@ -354,7 +354,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+                          <button type="submit" class="btn btn-primary" id="saidaVeiculo" name="saidaVeiculo">Save changes</button>
                         </div>
 
                     </form>
@@ -383,7 +383,7 @@
                   <div class="row">
                     <div class="container-fluid">
                   
-                      <form class="user" action="" method="POST">
+                      <form class="user" action="../model/cadastraChegadaVeiculo.php" method="POST">
                         <div class="form-group row">
                           <div class="col-sm-6 mb-3 mb-sm-0">
                             <label for="placa">Placa</label>
@@ -392,7 +392,7 @@
                             </select>
                           </div>
                           <div class="col-sm-6">
-                            <label for="veiculo">Veiculo</label>
+                            <label for="veiculo2">Veiculo</label>
                             <input type="text" name="veiculo2" id="veiculo2" class="form-control" required="">
                           </div>
                         </div>
@@ -405,14 +405,14 @@
 
                           <div class="col-sm-6">
                             <label for="hora">Horário</label>
-                            <input type="time" class="form-control " id="hora1" placeholder="" required="">
+                            <input type="time" class="form-control " id="hora1" name="hora1" placeholder="" required="">
                           </div>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-sm-6">
                             <label for="motorista">Motorista</label>
-                            <select name="motorista" id="motorista2" class="form-control" style="color:DodgerBlue;" required="">
+                            <select name="motorista2" id="motorista2" class="form-control" style="color:DodgerBlue;" required="">
                               <option selected disabled="">Selecione o motorista</option>
                             </select>
                           </div>
@@ -420,7 +420,7 @@
 
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <button type="submit" class="btn btn-primary" id="btnSaveChanges">Save changes</button>
+                          <button type="submit" class="btn btn-primary" id="chegadaVeiculos" name="chegadaVeiculos">Save changes</button>
                         </div>
 
                     </form>
@@ -474,6 +474,7 @@
 
   <script type="text/javascript"> carregaServicos();  </script>
   <script type="text/javascript"> carregaVeiculos(); </script>
+  <script type="text/javascript"> modeloVeiculos(); </script>
 
 </body>
 

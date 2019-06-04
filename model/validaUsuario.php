@@ -16,6 +16,7 @@ $indice = 0;
     $telefone = $_POST['telefone'];
     $motorista = $_POST['motorista'];
     $cnh = $_POST['cnh'];
+    $ativo = $_POST['ativo'];
     
 
     $_SESSION['nome'] = $nome;
@@ -27,6 +28,7 @@ $indice = 0;
     $_SESSION['cnh'] = $cnh;
     $_SESSION['permissao'] = $permissao;
     $_SESSION['empresa'] = $empresa;
+    $_SESSION['ativo'] = $ativo;
     
     
 

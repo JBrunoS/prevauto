@@ -11,7 +11,9 @@ include 'conexao.php';
                         telefone,
                         email,
                         senha,
-                        permissao) 
+                        permissao,
+                        user_system,
+                        ativo) 
                         VALUES (
                         '$_SESSION[empresa]',
                         '$_SESSION[nome]',
@@ -21,7 +23,9 @@ include 'conexao.php';
                         '$_SESSION[telefone]',
                         '$_SESSION[email]',
                         '$_SESSION[password]',
-                        '$_SESSION[permissao]'
+                        '$_SESSION[permissao]',
+                        0,
+                        '$_SESSION[ativo]'
                         )";
 
         $confirma = $mysqli->query($sql_code) or die($mysqli->error);

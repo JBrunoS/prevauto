@@ -210,28 +210,28 @@
           <!-- Content Row -->
 
 
-            <div class="form-group row col-md-12">
+           <div class="form-group row col-md-12">
               <div class="form-group col-md-4">
                 <button type="button" class="form-control form-control-user btn btn-info" id="btnEditar" name="btnEditar" data-toggle="modal" data-target="#exampleModalLarger1"><i class="fas fa-edit"> Editar</i></button>
               </div>
               
               <div class="form-group col-md-4">
-                <button type="button" class="form-control form-control-user btn btn-info" id="btnExcluir" name="btnExcluir" data-toggle="modal" data-target="#exampleModalLarger3"><i class="fas fa-trash" > Excluir</i></button>
+                <button type="button" class="form-control form-control-user btn btn-info" id="btnExcluir" name="btnExcluir" data-toggle="modal" data-target="#exampleModalLarger3" disabled=""><i class="fas fa-trash" > Excluir</i></button>
               </div>
               <div class="form-group col-md-4">
                 <button type="button" class="form-control form-control-user btn btn-info" id="btnAdicionar" name="btnAdicionar" data-toggle="modal" data-target="#exampleModalLarger2"><i class="fas fa-plus"> Adicionar</i></button>
               </div>
-            </div>
+            </div> 
 
            
 
-            <div class="card shadow mb-4">
+          <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Usuários</h6>
             </div>
 
             <div class="card-body">
-              <div class="table table-responsive-sm">
+              <div class="table table-responsive table-sm">
                 <table class="table table-unbordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
@@ -399,20 +399,28 @@
                              
                 
                 <div class="form-group row">
-                  <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="col-sm-3 mb-3 mb-sm-0">
                     <label for="editpassword">Senha</label>
                     <input type="text" class="form-control" name="editpassword" id="editpassword" placeholder="Password" required="">
                   </div>
 
-                  <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="col-sm-3 mb-3 mb-sm-0">
                     <label for="edittelefone">Telefone</label>
                     <input type="text" class="form-control" name="edittelefone" id="edittelefone" placeholder="Telefone" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                   </div>
 
-                  <div class="col-sm-4">
+                  <div class="col-sm-3">
                     <label for="editmotorista">Motorista</label>
                             <select class="form-control" name="editmotorista" id="editmotorista">
                               <option>Nivel de permissão</option>
+                              <option value="SIM">SIM</option>
+                              <option value="NAO" selected>NÃO</option>
+                            </select>
+                  </div>
+                  <div class="col-sm-3">
+                    <label for="editAtivo">Usuário Ativo</label>
+                            <select class="form-control" name="editAtivo" id="editAtivo">
+                              <option>Usuário Ativo</option>
                               <option value="SIM">SIM</option>
                               <option value="NAO" selected>NÃO</option>
                             </select>
@@ -496,7 +504,7 @@
 
                 <div class="form-group row">
                   
-                  <div class="col-sm-4 mb-3 mb-sm-0">
+                  <div class="col-sm-3 mb-3 mb-sm-0">
                     <label for="telefone">Telefone</label>
                     <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Telefone" required onkeypress="return event.charCode >= 48 && event.charCode <= 57">
                   </div>
@@ -510,9 +518,18 @@
                     </select>
                   </div>
 
-                  <div class="col-sm-5">
+                  <div class="col-sm-3">
                     <label for="cnh">CNH:</label>
                     <input type="text" class="form-control" name="cnh" id="cnh" placeholder="CNH" onkeypress="return event.charCode >= 48 && event.charCode <= 57">
+                  </div>
+
+                  <div class="col-sm-3">
+                    <label for="ativo">Usuário Ativo</label>
+                    <select class="form-control" name="ativo" id="ativo">
+                      <option disabled="">Selecione</option>
+                      <option value="SIM">SIM</option>
+                      <option value="NAO" selected>NÃO</option>
+                    </select>
                   </div>
 
                         <div class="modal-footer">
@@ -567,6 +584,13 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../bootstrap/js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="../bootstrap/vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="../bootstrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <!--<script src="../bootstrap/js/demo/datatables-demo.js"></script>-->
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
 

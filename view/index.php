@@ -237,17 +237,6 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td><button type="button" class="btn-circle btn-primary"  onclick="mostrarMensagem();">
-                        <i class="fas fa-check"></i>
-                      </button></td>
-                    </tr>
                     
                   </tbody>
                 </table>
@@ -305,6 +294,11 @@
     </div>
   </div>
 
+
+  <!-- Jquery-->
+
+  <script src="../js/carregaProximoServico.js"></script>
+
   <!-- Bootstrap core JavaScript-->
   <script src="../bootstrap/vendor/jquery/jquery.min.js"></script>
   <script src="../bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -321,6 +315,8 @@
   <!-- Page level custom scripts -->
   <script src="../bootstrap/js/demo/chart-area-demo.js"></script>
   <script src="../bootstrap/js/demo/chart-pie-demo.js"></script>
+
+  <script type="text/javascript"> carregaProximoServico(); </script>
 
   <script type="text/javascript">
     function mostrarMensagem(){

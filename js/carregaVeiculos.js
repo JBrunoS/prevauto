@@ -11,21 +11,12 @@ function carregaVeiculos(){
 				for(var i=0;dados.length>i;i++){
 					//Adicionando registros retornados na tabela
 					$('#dataTable tbody').append('<tr id="'+ dados[i].id_veiculo +'"><td class="veiculo">'+  dados[i].marca+'</td><td>'+dados[i].placa+'</td><td>'+ dados[i].cor +'</td><td>'+dados[i].quilometragem + ' KMS' +'</td><td>'+ '<button type="button" data-role="update" data-id="'+ dados[i].id_veiculo +'" class="btn-circle btn-primary" id="checa'+ dados[i].id_veiculo +'" data-toggle="modal" data-target="#exibeVeiculo"><i class="fas fa-check"></i></button>' +'</td></tr>');
-				}
-
-				for (var i = 0; i < dados.length; i++) {
 					$('#placas').append('<option value="'+ dados[i].id_veiculo + '">' + dados[i].placa +'</option>');
-				}
-
-				for (var i = 0; i < dados.length; i++) {
 					$('#placas1').append('<option value="'+ dados[i].id_veiculo + '">' + dados[i].placa +'</option>');
 					$('#placa2').append('<option value="'+ dados[i].id_veiculo + '">' + dados[i].placa +'</option>');
 				}
 			}
-
-
 		});
-
 });
 
 
@@ -44,6 +35,52 @@ function carregaVeiculos(){
 		}
 		});
 	});
+}
+
+function modeloVeiculos(){
+  $(function(){
+    $("#placas").change(function(){
+    var id = $("#placas option:selected").val();
+
+      if (id != "") {
+        $.post( "../model/exibeInfoVeiculos.php", {id: id}).done(function( data ) {
+          var x = JSON.parse(data);
+
+          $("#veiculo1").val(x.id_veiculo);
+        });
+
+      }
+    });
+  });
+
+  $(function(){
+  	$("#placas1").change(function(){
+    var id = $("#placas1 option:selected").val();
+
+      if (id != "") {
+        $.post( "../model/exibeInfoVeiculos.php", {id: id}).done(function( data ) {
+          var x = JSON.parse(data);
+
+          $("#veiculo").val(x.id_veiculo);
+        });
+
+      }
+    });
+  });
+
+    $(function(){
+  	$("#placa2").change(function(){
+    var id = $("#placa2 option:selected").val();
+
+      if (id != "") {
+        $.post( "../model/exibeInfoVeiculos.php", {id: id}).done(function( data ) {
+          var x = JSON.parse(data);
+          $("#veiculo2").val(x.id_veiculo);
+        });
+
+      }
+    });
+  });
 }
 
 

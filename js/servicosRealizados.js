@@ -10,7 +10,7 @@ function adicionaServico(){
 
 		
 
-		$.post( "../model/editaFuncionario.php", {id: id, nome: nome, cpf: cpf, email: email, permissao: permissao, cnh: cnh, senha: senha, telefone: telefone, motorista: motorista}).done(function( data ) {
+		$.post( "../model/cadastraServico.php", {servico: servico, placa: placa, email: email, permissao: permissao, cnh: cnh, senha: senha, telefone: telefone, motorista: motorista}).done(function( data ) {
 			console.log(data);
 		});
 	});

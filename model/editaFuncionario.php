@@ -13,8 +13,9 @@ if (isset($_POST['editsalvar'])) {
 	$telefone = $_POST['edittelefone'];
 	$motorista = $_POST['editmotorista'];
 	$permissao = $_POST['editpermissao'];
+	$ativo = $_POST['editAtivo'];
 
-	$stmt = $conn->prepare("UPDATE usuario SET nome_usuario = '$nome', cpf = '$cpf', motorista = '$motorista', cnh = '$cnh', telefone = '$telefone', email = '$email', senha = '$senha', permissao = '$permissao' WHERE id_usuario = '$id' ");
+	$stmt = $conn->prepare("UPDATE usuario SET nome_usuario = '$nome', cpf = '$cpf', motorista = '$motorista', cnh = '$cnh', telefone = '$telefone', email = '$email', senha = '$senha', permissao = '$permissao', ativo = '$ativo' WHERE id_usuario = '$id' ");
     $stmt->execute();
 
    		echo "<script> alert('Dados do usário alterado com sucesso!'); </script>";
